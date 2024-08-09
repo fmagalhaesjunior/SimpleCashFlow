@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Extensions
+﻿namespace Shared.Extensions
 {
     public static class TypeConverterExtensions
     {
@@ -103,6 +103,11 @@
             {
                 throw new ArgumentException($"O objeto não pode ser convertido para um valor {typeof(TEnum).Name} válido.");
             }
+        }
+
+        public static string ToEnumName<TEnum>(this TEnum enumValue) where TEnum : struct, Enum
+        {
+            return enumValue.ToString();
         }
     }
 }

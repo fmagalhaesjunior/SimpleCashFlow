@@ -1,13 +1,13 @@
 ﻿using Core.Interfaces;
 using Infrastructure.Data.Contexts;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Data.Repositories
 {
-    public class CommandRepository<TEntity> : ICommandRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly PostgreSqlContext _context;
-
-        public CommandRepository(PostgreSqlContext context)
+        public Repository(PostgreSqlContext context)
         {
             _context = context;
         }
@@ -18,10 +18,25 @@ namespace Infrastructure.Data.Repositories
             _context.SaveChanges();
         }
 
+        public IEnumerable<TEntity> GetAll()
+        {
+            return _context.Set<TEntity>().ToList();
+        }
+
+        public TEntity? GetById(object id)
+        {
+            return _context.Set<TEntity>().Find(id);
+        }
+
         public void Remove(TEntity entity)
         {
             _context.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _context.Set<TEntity>().Where(predicate);
         }
 
         public void Update(TEntity entity)
