@@ -19,9 +19,9 @@ namespace API.Controllers
         public async Task<IActionResult> Create([FromBody] CreateTransactionRequest request) =>
             Execute(() => _transactionUseCases.CreateTransaction(request));
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(Guid idTransaction) =>
-            Execute(() => _transactionUseCases.DeleteTransaction(idTransaction));
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id) =>
+            Execute(() => _transactionUseCases.DeleteTransaction(id));
 
         [HttpGet("[action]/{id}")]
         public async Task<IActionResult> GetById(Guid idTransaction) =>
