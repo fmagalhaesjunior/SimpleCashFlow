@@ -7,10 +7,6 @@ Este projeto implementa uma solução para controlar o fluxo de caixa diário de
 - [Arquitetura](#arquitetura)
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Uso](#uso)
-- [Testes](#testes)
-- [Escalabilidade](#escalabilidade)
-- [Contribuição](#contribuição)
 - [Licença](#licença)
 
 ## Descrição
@@ -67,3 +63,16 @@ Antes de começar, certifique-se de ter os seguintes itens instalados em sua má
 4. Acesse o sistema:
    O serviço de controle de lançamentos estará disponível em http://localhost:5000 e o serviço de consolidado diário em http://localhost:5001.
 
+
+## Licença
+Este projeto é licenciado sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
+
+### Explicação do README
+
+- **Descrição**: Introduz o projeto e os problemas que ele resolve.
+- **Arquitetura**: Explica a arquitetura do sistema e os principais componentes.
+- **Pré-requisitos**: Lista o software necessário para rodar o projeto.
+- **Instalação**: Passos para clonar o repositório, configurar variáveis de ambiente e iniciar os contêineres.
+- **Licença**: Informa sobre a licença do projeto.
+
+Esse README serve como um guia completo para desenvolvedores ou operadores que desejam entender, instalar e utilizar o sistema de controle de fluxo de caixa diário.
