@@ -1,0 +1,32 @@
+Descrição dos Componentes e Interações
+
+1. Cliente (Usuário do Sistema)
+- Interação: Os usuários (comerciantes ou operadores) interagem com o sistema por meio de uma interface gráfica ou diretamente por APIs RESTful.
+
+2. Serviço de Controle de Lançamentos
+- Responsabilidade: Gerenciar os lançamentos de débitos e créditos.
+- Interação: Recebe requisições para criar, ler, atualizar e deletar lançamentos.
+- Persistência: Armazena os lançamentos em um banco de dados PostgreSQL.
+- Comunicação: Publica mensagens no RabbitMQ quando um lançamento é criado, atualizado ou deletado.
+
+3. RabbitMQ
+- Responsabilidade: Gerenciar a fila de mensagens entre o serviço de controle de lançamentos e o serviço de consolidado diário.
+- Interação: Recebe mensagens do serviço de controle de lançamentos e as entrega ao serviço de consolidado diário.
+
+4. Serviço de Consolidado Diário
+- Responsabilidade: Calcular e fornecer o saldo diário consolidado.
+- Interação: Consome mensagens do RabbitMQ para atualizar o saldo diário.
+- Persistência: Armazena os saldos diários consolidados em um banco de dados PostgreSQL.
+- Escalabilidade: Implementa escalabilidade horizontal para lidar com alto volume de requisições.
+
+5. Banco de Dados PostgreSQL
+- Responsabilidade: Armazenar dados de lançamentos e saldos diários consolidados.
+- Interação: Conectado tanto ao serviço de controle de lançamentos quanto ao serviço de consolidado diário.
+
+6. Docker e Docker Compose
+- Responsabilidade: Orquestrar os contêineres de todos os serviços, garantindo que cada serviço seja executado de forma isolada e independente.
+- Interação: Define como os contêineres se comunicam entre si e com o mundo externo.
+
+Kubernetes (Opcional para Escalabilidade)
+- Responsabilidade: Gerenciar a escalabilidade e a disponibilidade dos serviços.
+- Interação: Escala os pods dos serviços conforme necessário, especialmente o serviço de consolidado diário para atender às demandas de picos.
