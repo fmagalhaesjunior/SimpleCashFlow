@@ -1,5 +1,6 @@
-﻿using Application.Requests;
-using Application.UseCases;
+﻿using Application.Commands;
+using Application.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -8,35 +9,23 @@ namespace API.Controllers
     [ApiController]
     public class TransactionsController : AbstractController<TransactionsController>
     {
-        private readonly ITransactionUseCases _transactionUseCases;
-        public TransactionsController(ILogger<TransactionsController> logger, ITransactionUseCases transactionUseCases) 
+        private readonly IMediator _mediator;
+        public TransactionsController(ILogger<TransactionsController> logger, IMediator mediator) 
             : base(logger)
         {
-            _transactionUseCases = transactionUseCases;
+            _mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateTransactionRequest request) =>
-            Execute(() => _transactionUseCases.CreateTransaction(request));
+        public async Task<IActionResult> Create([FromBody] CreateTransactionCommand request) =>
+            Execute(() => _mediator.Send(request));
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid idTransaction) =>
+            Execute(() => _mediator.Send(new GetTransactionByIdQuery(idTransaction)));
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id) =>
-            Execute(() => _transactionUseCases.DeleteTransaction(id));
-
-        [HttpGet("[action]/{id}")]
-        public async Task<IActionResult> GetById(Guid idTransaction) =>
-            Execute(() => _transactionUseCases.GetTransactionById(idTransaction));
-
-        [HttpGet("[action]/{description}")]
-        public async Task<IActionResult> GetByDescription(string description) =>
-            Execute(() => _transactionUseCases.GetTransactionByDescription(description));
-
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllDebit() =>
-            Execute(() => _transactionUseCases.GetAllDebitTransactions());
-
-        [HttpGet("[action]")]
-        public async Task<IActionResult> GetAllCredit() =>
-            Execute(() => _transactionUseCases.GetAllCreditTransactions());
+            Execute(() => _mediator.Send(new DeleteTransactionCommand(id)));
     }
 }

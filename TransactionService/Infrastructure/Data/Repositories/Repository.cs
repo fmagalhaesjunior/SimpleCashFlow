@@ -6,8 +6,8 @@ namespace Infrastructure.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly PostgreSqlContext _context;
-        public Repository(PostgreSqlContext context)
+        private readonly TransactionContext _context;
+        public Repository(TransactionContext context)
         {
             _context = context;
         }

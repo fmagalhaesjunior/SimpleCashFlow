@@ -1,11 +1,11 @@
 ﻿namespace Application.Responses
 {
-    public class GetTransactionResponse
+    public record GetTransactionResponse
     {
-        public Guid Id { get; set; }
-        public DateTime Date { get; set; }
-        public decimal Amount { get; set; }
-        public string Type { get; set; }
-        public string Description { get; set; }
+        public Guid Id { get; init; }
+        public DateTime Date { get; init; }
+        public decimal Amount { get; init; }
+        public string Type { get; init; }
+        public string Description { get; init; }
     }
 }

@@ -12,7 +12,7 @@ namespace Application.Configuration.DependencyInjection
     {
         public static void AddInfrastructureDI(this IServiceCollection services)
         {
-            services.AddDbContext<PostgreSqlContext>((provider, options) =>
+            services.AddDbContext<TransactionContext>((provider, options) =>
             {
                 options.UseNpgsql(provider.GetRequiredService<IOptionsSnapshot<ConnectionStringOptions>>().Value.DefaultConnection);
             });

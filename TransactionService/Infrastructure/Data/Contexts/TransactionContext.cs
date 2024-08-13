@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data.Contexts
 {
-    public class PostgreSqlContext : DbContext
+    public class TransactionContext : DbContext
     {
-        public PostgreSqlContext(DbContextOptions<PostgreSqlContext> options) 
+        public TransactionContext(DbContextOptions<TransactionContext> options) 
             : base(options)
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
@@ -16,7 +16,7 @@ namespace Infrastructure.Data.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PostgreSqlContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TransactionContext).Assembly);
             modelBuilder.HasPostgresExtension("uuid-ossp");
         }
     }
