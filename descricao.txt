@@ -5,9 +5,9 @@ Descrição dos Componentes e Interações
 
 2. Serviço de Controle de Lançamentos
 - Responsabilidade: Gerenciar os lançamentos de débitos e créditos.
-- Interação: Recebe requisições para criar, ler, atualizar e deletar lançamentos.
+- Interação: Recebe requisições para criar, ler e deletar lançamentos.
 - Persistência: Armazena os lançamentos em um banco de dados PostgreSQL.
-- Comunicação: Publica mensagens no RabbitMQ quando um lançamento é criado, atualizado ou deletado.
+- Comunicação: Publica mensagens no RabbitMQ quando um lançamento é criado ou deletado.
 
 3. RabbitMQ
 - Responsabilidade: Gerenciar a fila de mensagens entre o serviço de controle de lançamentos e o serviço de consolidado diário.
