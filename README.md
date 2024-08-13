@@ -34,7 +34,7 @@ A arquitetura do sistema é baseada em microsserviços e inclui:
 
 ### Diagrama de Arquitetura
 
-![descrição da Arquitetura](descricao.txt)
+[descrição da Arquitetura](descricao.txt)
 
 ## Pré-requisitos
 
