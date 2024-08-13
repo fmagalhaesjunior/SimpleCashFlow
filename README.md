@@ -49,8 +49,8 @@ Antes de começar, certifique-se de ter os seguintes itens instalados em sua má
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/fluxo-caixa-diario.git
-   cd fluxo-caixa-diario
+   git clone https://github.com/fmagalhaesjunior/SimpleCashFlow.git
+   cd SimpleCashFlow
    ```
 2. Configure as variáveis de ambiente:
    Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
