@@ -53,12 +53,13 @@ Antes de começar, certifique-se de ter os seguintes itens instalados em sua má
    cd SimpleCashFlow
    ```
 2. Configure as variáveis de ambiente:
-   Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis: /n
-     POSTGRES_DB=finance /n
-     POSTGRES_USER=user /n
-     POSTGRES_PASSWORD=password /n
+   Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
+   POSTGRES_DB=finance
+   POSTGRES_USER=user
+   POSTGRES_PASSWORD=password
+     
 
-3. Construa e suba os contêineres:
+4. Construa e suba os contêineres:
   ```bash
    docker-compose up --build
   ```
