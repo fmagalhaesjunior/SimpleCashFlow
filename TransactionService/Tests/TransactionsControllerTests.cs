@@ -1,14 +1,15 @@
 ﻿using Application.Commands;
 using Application.Responses;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using System.Net.Http.Json;
 
 namespace Tests
 {
-    public class TransactionsControllerTests : IClassFixture<WebApplicationFactory<API.Startup>>
+    public class TransactionsControllerTests : IClassFixture<WebApplicationFactory<Program>>
     {
         private readonly HttpClient _client;
-        public TransactionsControllerTests(WebApplicationFactory<API.Startup> factory)
+        public TransactionsControllerTests(WebApplicationFactory<Program> factory)
         {
             _client = factory.CreateClient();
         }
@@ -46,5 +47,11 @@ namespace Tests
             Assert.Equal(transactionId, transaction.Id);
         }
 
+        [Fact]
+        public void ProgramType_ShouldBeResolvable()
+        {
+            var programType = typeof(Program);
+            Assert.NotNull(programType);
+        }
     }
 }
