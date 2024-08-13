@@ -27,6 +27,11 @@ namespace Application.Commands
             _messageQueueService = messageQueueService;
         }
 
+        public CreateTransactionCommandHandler(IService<Transaction> service)
+        {
+            _service = service;
+        }
+
         public Task Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
         {
             _service.Add<CreateTransactionCommand, TransactionValidator>(request);
